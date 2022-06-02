@@ -1,7 +1,10 @@
+from cgitb import handler
 from fastapi import FastAPI, HTTPException
 from brander import generate_branding_snippet, generate_keywords
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
 MAX_INPUT_LENGTH = 32
 
 @app.get("/generate_snippet")
